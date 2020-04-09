@@ -8,5 +8,5 @@ elif [ -z "$LOGPLEX_INPUT_URL" ]
 then
 	echo "Please set \$LOGPLEX_INPUT_URL"
 else
-	curl -N ${LOGSPLOUT_URL}/logs | /bin/log-shuttle -logs-url=${LOGPLEX_INPUT_URL} -logplex-token={$LOGPLEX_TOKEN}
+	curl -sSN ${LOGSPLOUT_URL} | /bin/log-shuttle -logs-url=${LOGPLEX_INPUT_URL} -logplex-token={$LOGPLEX_TOKEN}
 fi
