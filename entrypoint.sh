@@ -36,5 +36,5 @@ else
   echo "Creating Logplex drain"
   curl -H "Authorization: Basic ${LOGPLEX_AUTH_KEY}" -d "{\"url\": \"${LOGDRAIN_URL}\"}" "${LOGPLEX_URL}/v2/channels/${CHANNEL_ID}/drains"
 
-	curl -sSN ${LOGSPOUT_URL} | /bin/log-shuttle -logs-url=${LOGPLEX_INPUT_URL} -logplex-token={$CHANNEL_TOKEN}
+	curl -sSN ${LOGSPOUT_URL} | /bin/log-shuttle -logs-url=${LOGPLEX_INPUT_URL} -logplex-token=${CHANNEL_TOKEN}
 fi
