@@ -28,6 +28,11 @@ else
 
   rm  /tmp/logplex-channel
 
+  while [[ "$(curl -H "Authorization: Basic ${LOGPLEX_AUTH_KEY}" -s -o /dev/null -w ''%{http_code}'' ${LOGPLEX_URL}/v2/channels/${CHANNEL_ID})" != "200" ]]; do
+    sleep 1;
+    echo 'Waiting for Logplex Channel...';
+  done
+
   echo "Creating Logplex drain"
   curl -H "Authorization: Basic ${LOGPLEX_AUTH_KEY}" -d "{\"url\": \"${LOGDRAIN_URL}\"}" "${LOGPLEX_URL}/v2/channels/${CHANNEL_ID}/drains"
 
