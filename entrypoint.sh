@@ -24,7 +24,7 @@ else
   curl -H "Authorization: Basic ${LOGPLEX_AUTH_KEY}" -d '{"tokens": ["app"]}' "${LOGPLEX_URL}/channels" | tee /tmp/logplex-channel
 
   export CHANNEL_ID=$(cat /tmp/logplex-channel | jq '.channel_id')
-  export CHANNEL_TOKEN=$(cat /tmp/logplex-channel | jq '.tokens.app')
+  export CHANNEL_TOKEN=$(cat /tmp/logplex-channel | jq '.tokens.app' |  tr -d '"')
 
   rm  /tmp/logplex-channel
 

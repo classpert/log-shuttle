@@ -33,10 +33,10 @@ docker: glv ver
 	docker build --build-arg GO_LINKER_SYMBOL=$(GO_LINKER_SYMBOL) \
 		--build-arg GO_LINKER_VALUE=$(GO_LINKER_VALUE) \
 		--build-arg GOOS=$(GOOS) --build-arg GARCH=$(GOARCH) \
-		-t classpert/log-shuttle:1.1.3 ./
+		-t classpert/log-shuttle:1.1.4 ./
 
 docker-push: docker ver
-	docker push classpert/log-shuttle:1.1.3
+	docker push classpert/log-shuttle:1.1.4
 
 tmp:
 	$(eval TMP := $(shell mktemp -d -t log_shuttle.XXXXX))
