@@ -36,5 +36,6 @@ else
   echo "Creating Logplex drain"
   curl -H "Authorization: Basic ${LOGPLEX_AUTH_KEY}" -d "{\"url\": \"${LOGDRAIN_URL}\"}" "${LOGPLEX_URL}/v2/channels/${CHANNEL_ID}/drains"
 
-	curl -sSN ${LOGSPOUT_URL} |  cut -f2 -d '|' | /bin/log-shuttle -logs-url=${LOGPLEX_INPUT_URL} -logplex-token=${CHANNEL_TOKEN}
+  # remove container name and color escape sequences
+	curl -sSN ${LOGSPOUT_URL} | cut -f2 -d '|' | sed 's/\x1b\[[0-9;]*m//g' | /bin/log-shuttle -logs-url=${LOGPLEX_INPUT_URL} -logplex-token=${CHANNEL_TOKEN}
 fi
