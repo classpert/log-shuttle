@@ -59,7 +59,7 @@ func determineLogsURL(logplexURL, logsURL, cmdLineURL string) string {
 
 	if len(cmdLineURL) > 0 {
 		if len(envURL) > 0 {
-			log.Println("Warning: Use of both an evnironment variable ($LOGPLEX_URL or $LOGS_URL) and -logs-url, using -logs-url option")
+			log.Println("Warning: Use of both an environment variable ($LOGPLEX_URL or $LOGS_URL) and -logs-url, using -logs-url option")
 		}
 		return cmdLineURL
 	}
