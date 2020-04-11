@@ -13,7 +13,7 @@ RUN GOOS=${GOOS} GOARC=${GOARCH} go build -v -ldflags "-X ${GO_LINKER_SYMBOL}=${
 
 FROM alpine:3.10
 
-RUN apk update && apk add ca-certificates curl jq && rm -rf /var/cache/apk/*
+RUN apk update && apk add ca-certificates curl jq expect && rm -rf /var/cache/apk/*
 
 COPY --from=build /build/log-shuttle /bin/log-shuttle
 COPY entrypoint.sh ./entrypoint.sh
